@@ -25,6 +25,7 @@
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   margin-bottom: 20px;
+  transition: transform 1s ease;
 }
 
 h1 {
@@ -48,15 +49,23 @@ h1 {
   background-color: #c06085;
 }
 
-.letter {
+.letter-paper {
+  width: 90%;
   max-width: 600px;
-  margin-top: 30px;
+  height: auto;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  display: none;
+  position: relative;
+  z-index: 2;
+}
+
+.letter-content {
   font-size: 1.1em;
   white-space: pre-wrap;
   text-align: left;
-  border-left: 4px solid #db7093;
-  padding-left: 15px;
-  display: none;
 }
 
 .typewriter span {
@@ -70,44 +79,38 @@ h1 {
   100% { border-color: transparent; }
 }
 
-.footer {
-  margin-top: 40px;
-  font-size: 0.9em;
-  color: #a0527d;
+.open-animation {
+  transform: rotateX(180deg);
+  transition: transform 1s ease;
 }
 
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="cover">
+    <div class="cover" id="cover">
       <h1>Leandro & Geycianne</h1>
       <p>1 mês de amor - 28/07</p>
-      <button class="reveal-button" onclick="revealLove()">Clique para abrir nossa cartinha 💌</button>
-    </div><audio id="musica" preload="auto">
-  <source src="https://dl.sndup.net/mhwh/um-amor-puro.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
-
-<div class="letter typewriter" id="letter"></div>
-
-<div class="footer">
-  <p><strong>Músicas para nós:</strong><br>
-  🎶 Um Amor Puro - Djavan<br>
-  🎶 Dezembro - Arthur Diniz</p>
+      <button class="reveal-button" onclick="openLetter()">Clique para abrir nossa cartinha 💌</button>
+    </div><div class="letter-paper" id="letterPaper">
+  <div class="letter-content typewriter" id="letter"></div>
 </div>
 
   </div>  <script>
     const texto = `Meu amor, sei que temos pouco tempo juntos, mas já foi o suficiente para eu perceber o quanto quero você na minha vida, obrigado por me escolher todos os dias, mesmo com as minhas falhas, isso me dá ainda mais certeza de que quero envelhecer ao seu lado, obrigado pela paciência e compreensão, isso me ensina a ser mais paciente e compreensível com você também, obrigado por ser a minha paz em um mundo que muito me cobra, isso me faz querer construir um lar ainda mais maravilhoso para nós dois, eu amo você, do fundo do meu coração, te quero pra toda vida.`;
 
-    function revealLove() {
+    function openLetter() {
+      const cover = document.getElementById('cover');
+      const paper = document.getElementById('letterPaper');
       const letter = document.getElementById('letter');
-      const musica = document.getElementById('musica');
 
-      letter.style.display = 'block';
-      musica.volume = 0.4;
-      musica.play();
-      typeWriter(letter, texto);
+      cover.classList.add('open-animation');
+
+      setTimeout(() => {
+        cover.style.display = 'none';
+        paper.style.display = 'block';
+        typeWriter(letter, texto);
+      }, 1000);
     }
 
     function typeWriter(element, text, i = 0) {
