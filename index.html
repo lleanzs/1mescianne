@@ -1,0 +1,113 @@
+<!DOCTYPE html><html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leandro & Geycianne</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Courier New', Courier, monospace;
+      background: #fff0f5;
+      color: #5a2a55;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }.container {
+  padding: 20px;
+  text-align: center;
+}
+
+.cover {
+  background-color: #ffc0cb;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.reveal-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 10px;
+  background-color: #db7093;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.reveal-button:hover {
+  background-color: #c06085;
+}
+
+.letter {
+  max-width: 600px;
+  margin-top: 30px;
+  font-size: 1.1em;
+  white-space: pre-wrap;
+  text-align: left;
+  border-left: 4px solid #db7093;
+  padding-left: 15px;
+  display: none;
+}
+
+.typewriter span {
+  border-right: 2px solid;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% { border-color: transparent; }
+  50% { border-color: #5a2a55; }
+  100% { border-color: transparent; }
+}
+
+.footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #a0527d;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cover">
+      <h1>Leandro & Geycianne</h1>
+      <p>1 mês de amor - 28/07</p>
+      <button class="reveal-button" onclick="revealLove()">Clique para abrir nossa cartinha 💌</button>
+    </div><div class="letter typewriter" id="letter"></div>
+
+<div class="footer">
+  <p><strong>Músicas para nós:</strong><br>
+  🎶 Um Amor Puro - Djavan<br>
+  🎶 Dezembro - Arthur Diniz</p>
+</div>
+
+  </div>  <script>
+    const texto = `Meu amor, sei que temos pouco tempo juntos, mas já foi o suficiente para eu perceber o quanto quero você na minha vida, obrigado por me escolher todos os dias, mesmo com as minhas falhas, isso me dá ainda mais certeza de que quero envelhecer ao seu lado, obrigado pela paciência e compreensão, isso me ensina a ser mais paciente e compreensível com você também, obrigado por ser a minha paz em um mundo que muito me cobra, isso me faz querer construir um lar ainda mais maravilhoso para nós dois, eu amo você, do fundo do meu coração, te quero pra toda vida.`;
+
+    function revealLove() {
+      const letter = document.getElementById('letter');
+      letter.style.display = 'block';
+      typeWriter(letter, texto);
+    }
+
+    function typeWriter(element, text, i = 0) {
+      if (i < text.length) {
+        element.innerHTML = text.substring(0, i+1) + '<span></span>';
+        setTimeout(() => typeWriter(element, text, i + 1), 40);
+      } else {
+        element.innerHTML = text;
+      }
+    }
+  </script></body>
+</html>
