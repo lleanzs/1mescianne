@@ -84,7 +84,12 @@ h1 {
       <h1>Leandro & Geycianne</h1>
       <p>1 mês de amor - 28/07</p>
       <button class="reveal-button" onclick="revealLove()">Clique para abrir nossa cartinha 💌</button>
-    </div><div class="letter typewriter" id="letter"></div>
+    </div><audio id="musica" preload="auto">
+  <source src="https://dl.sndup.net/mhwh/um-amor-puro.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+<div class="letter typewriter" id="letter"></div>
 
 <div class="footer">
   <p><strong>Músicas para nós:</strong><br>
@@ -97,7 +102,11 @@ h1 {
 
     function revealLove() {
       const letter = document.getElementById('letter');
+      const musica = document.getElementById('musica');
+
       letter.style.display = 'block';
+      musica.volume = 0.4;
+      musica.play();
       typeWriter(letter, texto);
     }
 
